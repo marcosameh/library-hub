@@ -13,13 +13,13 @@ export const ADMIN_ROUTES: Routes = [
       {
         path: 'new',
         loadComponent: () =>
-          import('./books/book-new.component')
+          import('./books/book-new/book-new.component')
             .then(m => m.BookNewComponent)
       },
       {
         path: ':id/edit',
         loadComponent: () =>
-          import('./books/book-edit.component')
+          import('./books/book-edit/book-edit.component')
             .then(m => m.BookEditComponent)
       }
     ]
