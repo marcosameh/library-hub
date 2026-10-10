@@ -5,6 +5,10 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideRouter(routes),
+    {
+      provide:"API_URL",
+      useValue:"http://localhost:5000/api"
+    }
   ]
 };
