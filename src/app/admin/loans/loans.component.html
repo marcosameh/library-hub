@@ -1,1 +1,91 @@
-<p>loans works!</p>
+<section class="container page">
+  <header class="page-header">
+    <div>
+      <h1>All loans</h1>
+      <p class="subtitle">Every loan across all members.</p>
+    </div>
+    <button class="btn btn-secondary" type="button">↻ Refresh</button>
+  </header>
+
+  <div class="toolbar">
+    <!-- ?status=active|overdue|returned|all -->
+    <div class="tabs" role="tablist">
+      <button class="tab" type="button" role="tab">All<span class="count">5</span></button>
+      <button class="tab active" type="button" role="tab">Active<span class="count">3</span></button>
+      <button class="tab" type="button" role="tab">Overdue<span class="count">1</span></button>
+      <button class="tab" type="button" role="tab">Returned<span class="count">2</span></button>
+    </div>
+
+    <input class="input search" type="search" placeholder="Filter by member or book…" />
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Member</th>
+          <th>Book</th>
+          <th>Borrowed</th>
+          <th>Due</th>
+          <th>Status</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="overdue">
+          <td class="muted">1</td>
+          <td>
+            <div class="member">
+              <span class="avatar">MM</span>
+              Marco Member
+            </div>
+          </td>
+          <td><a href="/books/1">Clean Code</a></td>
+          <td>Sep 20, 2026</td>
+          <td>Oct 4, 2026</td>
+          <td><span class="badge badge-danger">Overdue</span></td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" type="button">Mark returned</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="muted">2</td>
+          <td>
+            <div class="member">
+              <span class="avatar">MM</span>
+              Marco Member
+            </div>
+          </td>
+          <td><a href="/books/10">Dune</a></td>
+          <td>Oct 7, 2026</td>
+          <td>Oct 21, 2026</td>
+          <td><span class="badge badge-primary">Active</span></td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" type="button">Mark returned</button>
+          </td>
+        </tr>
+        <tr>
+          <td class="muted">3</td>
+          <td>
+            <div class="member">
+              <span class="avatar">SR</span>
+              Sara Reader
+            </div>
+          </td>
+          <td><a href="/books/12">Sapiens</a></td>
+          <td>Aug 31, 2026</td>
+          <td>Sep 14, 2026</td>
+          <td><span class="badge badge-success">Returned</span></td>
+          <td class="actions"><span class="muted">—</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- @empty -->
+  <div class="state surface">
+    <span class="state-icon">📭</span>
+    <p class="state-title">No loans match this filter</p>
+  </div>
+</section>

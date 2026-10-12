@@ -1,1 +1,200 @@
-<p>dashboard works!</p>
+<section class="container page">
+  <header class="page-header">
+    <div>
+      <h1>Dashboard</h1>
+      <p class="subtitle">Library overview</p>
+    </div>
+    <div class="row">
+      <a class="btn btn-secondary" href="/admin/loans">View loans</a>
+      <a class="btn btn-primary" href="/admin/books/new">+ Add book</a>
+      <!-- httpResource.reload() -->
+      <button class="btn btn-ghost btn-icon" type="button" title="Reload stats">↻</button>
+    </div>
+  </header>
+
+  <!-- ================= STATS (httpResource — /api/admin/stats takes 2s) ================= -->
+
+  <!-- isLoading() -->
+  <div class="stats-grid">
+    <div class="stat-card surface"><div class="skeleton sk-label"></div><div class="skeleton sk-value"></div></div>
+    <div class="stat-card surface"><div class="skeleton sk-label"></div><div class="skeleton sk-value"></div></div>
+    <div class="stat-card surface"><div class="skeleton sk-label"></div><div class="skeleton sk-value"></div></div>
+    <div class="stat-card surface"><div class="skeleton sk-label"></div><div class="skeleton sk-value"></div></div>
+  </div>
+
+  <!-- error() -->
+  <div class="alert alert-danger block-gap">
+    <div class="alert-body">Couldn't load statistics.</div>
+    <button class="btn btn-secondary btn-sm" type="button">Retry</button>
+  </div>
+
+  <!-- value() -->
+  <div class="stats-grid">
+    <div class="stat-card surface">
+      <span class="stat-icon">📚</span>
+      <span class="stat-label">Total books</span>
+      <span class="stat-value">25</span>
+    </div>
+    <div class="stat-card surface">
+      <span class="stat-icon">👥</span>
+      <span class="stat-label">Members</span>
+      <span class="stat-value">2</span>
+    </div>
+    <div class="stat-card surface">
+      <span class="stat-icon">🔄</span>
+      <span class="stat-label">Active loans</span>
+      <span class="stat-value">3</span>
+    </div>
+    <div class="stat-card surface danger">
+      <span class="stat-icon">⏰</span>
+      <span class="stat-label">Overdue</span>
+      <span class="stat-value">1</span>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+    <!-- ================= Books per category ================= -->
+    <section class="panel surface">
+      <h2 class="panel-title">Books per category</h2>
+      <ul class="bars">
+        <!-- width = count / max * 100% -->
+        <li class="bar-row">
+          <span class="bar-label">Science Fiction</span>
+          <div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div>
+          <span class="bar-value">7</span>
+        </li>
+        <li class="bar-row">
+          <span class="bar-label">Programming</span>
+          <div class="bar-track"><div class="bar-fill" style="width: 86%"></div></div>
+          <span class="bar-value">6</span>
+        </li>
+        <li class="bar-row">
+          <span class="bar-label">Fantasy</span>
+          <div class="bar-track"><div class="bar-fill" style="width: 71%"></div></div>
+          <span class="bar-value">5</span>
+        </li>
+        <li class="bar-row">
+          <span class="bar-label">History</span>
+          <div class="bar-track"><div class="bar-fill" style="width: 43%"></div></div>
+          <span class="bar-value">3</span>
+        </li>
+        <li class="bar-row">
+          <span class="bar-label">Science</span>
+          <div class="bar-track"><div class="bar-fill" style="width: 43%"></div></div>
+          <span class="bar-value">3</span>
+        </li>
+        <li class="bar-row">
+          <span class="bar-label">Business</span>
+          <div class="bar-track"><div class="bar-fill" style="width: 14%"></div></div>
+          <span class="bar-value">1</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================= Top rated — @defer (on idle) ================= -->
+    <section class="panel surface">
+      <h2 class="panel-title">Top rated</h2>
+      <ol class="top-list">
+        <li>
+          <span class="rank">1</span>
+          <img src="https://picsum.photos/seed/book7/300/450" alt="" />
+          <div class="top-info">
+            <a href="/books/7">Foundation</a>
+            <span class="muted small">Isaac Asimov</span>
+          </div>
+          <span class="stars small">★ 5.0</span>
+        </li>
+        <li>
+          <span class="rank">2</span>
+          <img src="https://picsum.photos/seed/book15/300/450" alt="" />
+          <div class="top-info">
+            <a href="/books/15">The Hobbit</a>
+            <span class="muted small">J.R.R. Tolkien</span>
+          </div>
+          <span class="stars small">★ 4.5</span>
+        </li>
+        <li>
+          <span class="rank">3</span>
+          <img src="https://picsum.photos/seed/book1/300/450" alt="" />
+          <div class="top-info">
+            <a href="/books/1">Clean Code</a>
+            <span class="muted small">Robert C. Martin</span>
+          </div>
+          <span class="stars small">★ 4.5</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ================= Quote of the moment (polling every 10s) ================= -->
+    <section class="panel surface quote-panel">
+      <div class="panel-head">
+        <h2 class="panel-title">Quote of the moment</h2>
+        <span class="badge badge-success live">● Live</span>
+      </div>
+      <blockquote class="quote">“So many books, so little time.”</blockquote>
+      <p class="muted small">Updated at 14:32:10 · refreshes every 10s</p>
+    </section>
+
+    <!-- ================= Flaky service (retry demo) ================= -->
+    <section class="panel surface">
+      <h2 class="panel-title">Flaky service</h2>
+      <p class="muted small">Calls <code>/api/demo/flaky</code> with retry (3 attempts, 1s delay).</p>
+
+      <button class="btn btn-primary" type="button">Call flaky service</button>
+
+      <ul class="attempts">
+        <li class="attempt fail">Attempt 1 · 503 Service Unavailable</li>
+        <li class="attempt fail">Attempt 2 · 503 Service Unavailable</li>
+        <li class="attempt ok">Attempt 3 · Success!</li>
+      </ul>
+
+      <!-- final error after all retries -->
+      <div class="alert alert-danger">
+        <div class="alert-body">Failed after 3 retries.</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= Users — @defer (on interaction) ================= -->
+  <section class="panel surface users-panel">
+    <div class="panel-head">
+      <h2 class="panel-title">Users</h2>
+    </div>
+
+    <!-- @placeholder: the trigger -->
+    <button class="btn btn-secondary" type="button">Show users</button>
+
+    <!-- @loading -->
+    <div class="row muted"><span class="spinner"></span> Loading users…</div>
+
+    <!-- deferred content -->
+    <div class="table-wrapper">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Admin User</td>
+            <td>admin&#64;library.dev</td>
+            <td><span class="badge badge-primary">Admin</span></td>
+          </tr>
+          <tr>
+            <td>Marco Member</td>
+            <td>member&#64;library.dev</td>
+            <td><span class="badge">Member</span></td>
+          </tr>
+          <tr>
+            <td>Sara Reader</td>
+            <td>sara&#64;library.dev</td>
+            <td><span class="badge">Member</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</section>

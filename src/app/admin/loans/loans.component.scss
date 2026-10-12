@@ -1,0 +1,41 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+
+  .search {
+    width: min(300px, 100%);
+  }
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.table tr.overdue {
+  background: var(--color-danger-soft);
+
+  td:first-child {
+    box-shadow: inset 3px 0 0 var(--color-danger);
+  }
+}
+
+.state {
+  margin-top: 20px;
+}
