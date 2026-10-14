@@ -1,1 +1,14 @@
-<router-outlet />
+<!-- Global progress bar: visible while HTTP requests are pending (loadingInterceptor) -->
+<div class="progress-bar" role="progressbar" aria-label="Loading">
+  <div class="progress-bar-fill"></div>
+</div>
+
+<app-header />
+
+<main class="main">
+  <router-outlet />
+</main>
+
+<app-footer />
+
+<app-toast-container />
