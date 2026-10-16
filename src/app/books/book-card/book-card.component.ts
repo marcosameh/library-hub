@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { BookListItem } from '../../core/models/book.model';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';

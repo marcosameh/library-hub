@@ -1,34 +1,31 @@
 <!-- input.required<BookListItem>()  ·  output: borrow / select (try it!)
      Use @switch on availableCopies for the badge. -->
 <article class="book-card">
- <a class="cover-link" [routerLink]="['/book', book().id]">
-    <img class="cover" [src]="this.book().coverUrl" alt="Cover of Clean Code" loading="lazy" />
+  <a class="cover-link" [routerLink]="['/books', book().id]">
+    <img class="cover" [src]="book().coverUrl" [alt]="'Cover of ' + book().title" loading="lazy" />
 
     <!-- availableCopies: 0 / 1 / many -->
-     @switch(this.book().availableCopies){
-        @case (1) {
-<span class="availability badge badge-warning">Last copy!</span>
-        }@case (0)
-         {
-            <span class="availability badge badge-danger">Not available</span>
-         }@default
-          {
-           <span class="availability badge badge-success">{{this.book().availableCopies}} available</span>
-          }
-
-     }
-  
-    
-
+    @switch (book().availableCopies) {
+      @case (0) {
+        <span class="availability badge badge-danger">Not available</span>
+      }
+      @case (1) {
+        <span class="availability badge badge-warning">Last copy!</span>
+      }
+      @default {
+        <span class="availability badge badge-success">{{ book().availableCopies }} available</span>
+      }
+    }
   </a>
 
   <div class="book-body">
-    <span class="category">{{this.book().categoryName}}</span>
-    <h3 class="title"><a routerLink="['/book',book().id]">{{this.book().title}}</a></h3>
-    <p class="author">{{this.book().authorName}} · {{this.book().publishedYear}}</p>
+    <span class="category">{{ book().categoryName }}</span>
+    <h3 class="title"><a [routerLink]="['/books', book().id]">{{ book().title }}</a></h3>
+    <p class="author">{{ book().authorName }} · {{ book().publishedYear }}</p>
 
     <div class="book-footer">
-      <span class="stars" title="4.5 / 5">★★★★½</span>
+      <!-- TODO Milestone 2 step 5: replace with {{ book().averageRating | stars }} -->
+      <span class="stars" [title]="book().averageRating">{{ book().averageRating }}</span>
       <span class="price">{{ book().price | currency:'$' }}</span>
     </div>
   </div>
