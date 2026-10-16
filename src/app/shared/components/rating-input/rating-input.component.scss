@@ -1,0 +1,40 @@
+:host {
+  display: inline-block;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  padding: 0 2px;
+  border: none;
+  background: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--color-border);
+  cursor: pointer;
+  transition: transform 0.1s, color 0.1s;
+
+  &:hover { transform: scale(1.15); }
+
+  &.filled,
+  &.hover {
+    color: var(--color-star);
+  }
+}
+
+.rating-label {
+  margin-left: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.rating.readonly .star {
+  font-size: 1.1rem;
+  cursor: default;
+
+  &:hover { transform: none; }
+}

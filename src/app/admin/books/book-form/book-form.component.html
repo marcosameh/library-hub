@@ -1,1 +1,140 @@
-<p>book-form works!</p>
+<!-- ONE form for create & edit. Used by book-new and book-edit pages (or route directly to it). -->
+<form class="book-form surface" novalidate>
+  <!-- Generic server error -->
+  <div class="alert alert-danger">
+    <div class="alert-body">Please fix the highlighted fields.</div>
+  </div>
+
+  <!-- ============ Basic info ============ -->
+  <fieldset class="section">
+    <legend>Basic information</legend>
+
+    <div class="form-grid">
+      <div class="form-field span-2">
+        <label class="required" for="title">Title</label>
+        <input id="title" class="input" type="text" placeholder="e.g. Clean Code" />
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <label class="required" for="isbn">ISBN</label>
+        <div class="input-wrapper">
+          <input id="isbn" class="input" type="text" placeholder="978-X-XXX-XXXXX-X" />
+          <!-- pending async validator -->
+          <span class="input-suffix"><span class="spinner"></span></span>
+        </div>
+        <span class="hint">Format: 978-X-XXX-XXXXX-X</span>
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <label class="required" for="publishedYear">Published year</label>
+        <input id="publishedYear" class="input" type="number" placeholder="2008" />
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <label class="required" for="author">Author</label>
+        <select id="author" class="select">
+          <option value="" disabled selected>Select an author</option>
+          <option>Carl Sagan</option>
+          <option>Frank Herbert</option>
+          <option>Isaac Asimov</option>
+          <option>Robert C. Martin</option>
+        </select>
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <label class="required" for="category">Category</label>
+        <select id="category" class="select">
+          <option value="" disabled selected>Select a category</option>
+          <option>Business</option>
+          <option>Fantasy</option>
+          <option>History</option>
+          <option>Programming</option>
+        </select>
+        <app-field-error />
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- ============ Inventory ============ -->
+  <fieldset class="section">
+    <legend>Inventory &amp; pricing</legend>
+
+    <div class="form-grid three">
+      <div class="form-field">
+        <label class="required" for="pages">Pages</label>
+        <input id="pages" class="input" type="number" min="1" />
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <label class="required" for="price">Price</label>
+        <div class="input-prefix-wrapper">
+          <span class="prefix">$</span>
+          <input id="price" class="input" type="number" min="0" step="0.01" />
+        </div>
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <span class="label required">Total copies</span>
+        <!-- ControlValueAccessor -->
+        <app-quantity-input />
+        <app-field-error />
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- ============ Details ============ -->
+  <fieldset class="section">
+    <legend>Details</legend>
+
+    <div class="form-grid">
+      <div class="form-field span-2">
+        <label for="description">Description</label>
+        <textarea id="description" class="textarea" placeholder="Short description…"></textarea>
+        <span class="hint align-end">0 / 2000</span>
+      </div>
+
+      <div class="form-field span-2">
+        <label for="coverUrl">Cover URL</label>
+        <div class="cover-row">
+          <input id="coverUrl" class="input" type="url" placeholder="https://… (leave empty for a random cover)" />
+          <img class="cover-preview" src="https://picsum.photos/seed/book1/300/450" alt="Cover preview" />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- ============ Tags (FormArray) ============ -->
+  <fieldset class="section">
+    <legend>Tags <span class="muted small">(2 / 5)</span></legend>
+
+    <div class="tags-list">
+      <!-- one row per FormArray control -->
+      <div class="tag-row">
+        <span class="tag-index">1</span>
+        <input class="input" type="text" value="craftsmanship" aria-label="Tag 1" />
+        <button class="btn btn-ghost btn-icon" type="button" aria-label="Remove tag">✕</button>
+      </div>
+      <div class="tag-row">
+        <span class="tag-index">2</span>
+        <input class="input is-invalid" type="text" value="" aria-label="Tag 2" />
+        <button class="btn btn-ghost btn-icon" type="button" aria-label="Remove tag">✕</button>
+      </div>
+      <p class="error-text tag-error">Tag is required (max 20 characters).</p>
+    </div>
+
+    <!-- hide when 5 tags -->
+    <button class="btn btn-secondary btn-sm" type="button">+ Add tag</button>
+  </fieldset>
+
+  <div class="form-actions">
+    <a class="btn btn-secondary" href="/books">Cancel</a>
+    <!-- disabled while invalid / pending / saving -->
+    <button class="btn btn-primary" type="submit">Save book</button>
+  </div>
+</form>

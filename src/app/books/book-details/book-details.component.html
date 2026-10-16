@@ -1,1 +1,91 @@
-<p>book-details works!</p>
+<section class="container page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/books">Books</a>
+    <span>/</span>
+    <span>Clean Code</span>
+  </nav>
+
+  <article class="details surface">
+    <img class="cover" src="https://picsum.photos/seed/book1/300/450" alt="Cover of Clean Code" />
+
+    <div class="info">
+      <span class="category">Programming</span>
+      <h1 class="title">Clean Code</h1>
+      <p class="author">
+        by <a href="/authors/1">Robert C. Martin</a>
+      </p>
+
+      <div class="rating-row">
+        <span class="stars">★★★★½</span>
+        <span class="muted small">4.5 · 2 reviews</span>
+      </div>
+
+      <!-- @switch on availableCopies -->
+      <div class="availability">
+        <span class="badge badge-success">3 of 3 copies available</span>
+        <!-- <span class="badge badge-warning">Last copy!</span> -->
+        <!-- <span class="badge badge-danger">Not available</span> -->
+      </div>
+
+      <p class="description">
+        "Clean Code" is a well-known programming book published in 2008.
+      </p>
+
+      <dl class="meta">
+        <div>
+          <dt>ISBN</dt>
+          <dd>978-3-512-48291-6</dd>
+        </div>
+        <div>
+          <dt>Published</dt>
+          <dd>2008</dd>
+        </div>
+        <div>
+          <dt>Pages</dt>
+          <dd>464</dd>
+        </div>
+        <div>
+          <dt>Price</dt>
+          <dd>$39.99</dd>
+        </div>
+        <div>
+          <dt>Added</dt>
+          <dd>Mar 14, 2026</dd>
+        </div>
+      </dl>
+
+      <div class="tags">
+        <!-- [appHighlight] directive demo on tags -->
+        <span class="chip highlightable">#craftsmanship</span>
+        <span class="chip highlightable">#best-practices</span>
+      </div>
+
+      <div class="actions">
+        <!-- Logged in only. Show spinner + disable while borrowing -->
+        <button class="btn btn-primary btn-lg" type="button">Borrow this book</button>
+        <button class="btn btn-primary btn-lg" type="button" disabled>
+          <span class="spinner spinner-light"></span> Borrowing…
+        </button>
+
+        <!-- Logged out -->
+        <a class="btn btn-secondary btn-lg" href="/login">Login to borrow</a>
+
+        <!-- *appHasRole="'Admin'" -->
+        <div class="admin-actions">
+          <a class="btn btn-secondary" href="/admin/books/1/edit">✎ Edit</a>
+          <button class="btn btn-danger" type="button">🗑 Delete</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- @defer (on viewport) -->
+  <app-book-reviews />
+
+  <!-- @placeholder / @loading for the deferred block -->
+  <div class="reviews-placeholder surface">
+    <div class="skeleton" style="height: 20px; width: 160px"></div>
+    <div class="skeleton" style="height: 64px"></div>
+    <div class="skeleton" style="height: 64px"></div>
+  </div>
+</section>

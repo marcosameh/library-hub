@@ -1,0 +1,42 @@
+:host {
+  display: block;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 16px 20px 0;
+
+  /* projected title */
+  ::ng-deep [card-title] {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  &:empty { display: none; }
+}
+
+.card-body {
+  flex: 1;
+  padding: 16px 20px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+
+  &:empty { display: none; }
+}

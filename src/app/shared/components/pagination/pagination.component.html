@@ -1,1 +1,23 @@
-<p>pagination works!</p>
+<!-- Inputs: page, totalPages, totalCount, pageSize. Output: pageChange.
+     "active" on current page; disable Prev on page 1 and Next on last page. -->
+<nav class="pagination" aria-label="Pagination">
+  <p class="pagination-info">Showing <strong>11–20</strong> of <strong>25</strong> books</p>
+
+  <div class="pagination-pages">
+    <button class="page-btn" type="button" aria-label="Previous page">‹ Prev</button>
+    <button class="page-btn" type="button">1</button>
+    <button class="page-btn active" type="button" aria-current="page">2</button>
+    <button class="page-btn" type="button">3</button>
+    <button class="page-btn" type="button" aria-label="Next page">Next ›</button>
+  </div>
+
+  <label class="page-size">
+    <span>Per page</span>
+    <select class="select">
+      <option>5</option>
+      <option selected>10</option>
+      <option>20</option>
+      <option>50</option>
+    </select>
+  </label>
+</nav>

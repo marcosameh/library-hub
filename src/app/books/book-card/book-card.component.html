@@ -1,1 +1,23 @@
-<p>book-card works!</p>
+<!-- input.required<BookListItem>()  ·  output: borrow / select (try it!)
+     Use @switch on availableCopies for the badge. -->
+<article class="book-card">
+  <a class="cover-link" href="/books/1">
+    <img class="cover" src="https://picsum.photos/seed/book1/300/450" alt="Cover of Clean Code" loading="lazy" />
+
+    <!-- availableCopies: 0 / 1 / many -->
+    <span class="availability badge badge-success">3 available</span>
+    <!-- <span class="availability badge badge-warning">Last copy!</span> -->
+    <!-- <span class="availability badge badge-danger">Not available</span> -->
+  </a>
+
+  <div class="book-body">
+    <span class="category">Programming</span>
+    <h3 class="title"><a href="/books/1">Clean Code</a></h3>
+    <p class="author">Robert C. Martin · 2008</p>
+
+    <div class="book-footer">
+      <span class="stars" title="4.5 / 5">★★★★½</span>
+      <span class="price">$39.99</span>
+    </div>
+  </div>
+</article>

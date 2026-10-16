@@ -1,1 +1,20 @@
-<p>card works!</p>
+<!-- Multi-slot content projection:
+     <app-card>
+       <h3 card-title>Title</h3>
+       ...default content...
+       <div card-actions>buttons</div>
+     </app-card>
+-->
+<section class="card">
+  <header class="card-header">
+    <ng-content select="[card-title]" />
+  </header>
+
+  <div class="card-body">
+    <ng-content />
+  </div>
+
+  <footer class="card-actions">
+    <ng-content select="[card-actions]" />
+  </footer>
+</section>

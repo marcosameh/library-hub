@@ -1,0 +1,61 @@
+/* Shared look with register.component.scss — consider moving to a global partial */
+.auth-page {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - var(--header-h) - 70px);
+  padding: 32px 16px;
+}
+
+.auth-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: min(440px, 100%);
+  padding: 32px;
+}
+
+.auth-header {
+  text-align: center;
+
+  h1 { margin: 8px 0 4px; }
+  p { margin: 0; }
+}
+
+.auth-logo {
+  font-size: 2.5rem;
+}
+
+.link-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.demo-accounts {
+  padding: 12px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-sm);
+
+  p { margin: 0 0 8px; }
+
+  .chip {
+    background: var(--color-surface);
+    font: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+
+    &:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  }
+}
+
+.auth-footer {
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}

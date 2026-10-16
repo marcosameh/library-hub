@@ -1,0 +1,57 @@
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+
+  &.danger {
+    border-color: color-mix(in srgb, var(--color-danger) 40%, transparent);
+
+    .summary-value { color: var(--color-danger); }
+  }
+}
+
+.summary-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.summary-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.overdue-alert {
+  margin-bottom: 20px;
+}
+
+.d-block {
+  display: block;
+}
+
+.table {
+  tr.overdue {
+    background: var(--color-danger-soft);
+
+    td:first-child {
+      box-shadow: inset 3px 0 0 var(--color-danger);
+    }
+  }
+}
+
+.state {
+  margin-top: 20px;
+}

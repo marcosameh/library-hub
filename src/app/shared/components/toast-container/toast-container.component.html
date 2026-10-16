@@ -1,1 +1,28 @@
-<p>toast-container works!</p>
+<!-- Fixed in the corner; render one .toast per item in the ToastService signal -->
+<div class="toast-container" aria-live="polite">
+  <div class="toast toast-success" role="status">
+    <span class="toast-icon">✓</span>
+    <div class="toast-body">
+      <p class="toast-title">Book saved</p>
+      <p class="toast-message">"Clean Code" was updated successfully.</p>
+    </div>
+    <button class="toast-close" type="button" aria-label="Close">×</button>
+  </div>
+
+  <div class="toast toast-error" role="alert">
+    <span class="toast-icon">!</span>
+    <div class="toast-body">
+      <p class="toast-title">Can't borrow this book</p>
+      <p class="toast-message">You have overdue books. Return them before borrowing new ones.</p>
+    </div>
+    <button class="toast-close" type="button" aria-label="Close">×</button>
+  </div>
+
+  <div class="toast toast-info" role="status">
+    <span class="toast-icon">i</span>
+    <div class="toast-body">
+      <p class="toast-message">You have been logged out.</p>
+    </div>
+    <button class="toast-close" type="button" aria-label="Close">×</button>
+  </div>
+</div>

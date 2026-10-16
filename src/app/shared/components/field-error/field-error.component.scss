@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.error-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &::before {
+    content: '⚠';
+    font-size: 0.75rem;
+  }
+}

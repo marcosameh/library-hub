@@ -1,1 +1,79 @@
-<p>book-reviews works!</p>
+<section class="reviews surface">
+  <header class="reviews-header">
+    <h2>Reviews <span class="muted">(2)</span></h2>
+    <div class="summary">
+      <span class="avg">4.5</span>
+      <div>
+        <span class="stars">★★★★½</span>
+        <p class="muted small">Average rating</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ Review form (logged in only) ============ -->
+  <form class="review-form">
+    <h3>Write a review</h3>
+
+    <div class="form-field">
+      <span class="label required">Your rating</span>
+      <app-rating-input />
+    </div>
+
+    <div class="form-field">
+      <label class="required" for="comment">Comment</label>
+      <textarea id="comment" class="textarea" placeholder="What did you think about this book?"></textarea>
+      <div class="row">
+        <app-field-error />
+        <span class="spacer"></span>
+        <span class="hint">0 / 500</span>
+      </div>
+    </div>
+
+    <!-- Server 409: "You already reviewed this book." -->
+    <div class="alert alert-danger">
+      <div class="alert-body">You already reviewed this book.</div>
+    </div>
+
+    <div class="row end">
+      <button class="btn btn-primary" type="submit">Submit review</button>
+    </div>
+  </form>
+
+  <!-- Logged out -->
+  <div class="alert alert-info">
+    <div class="alert-body"><a href="/login">Log in</a> to write a review.</div>
+  </div>
+
+  <!-- ============ Review list ============ -->
+  <ul class="review-list">
+    <li class="review">
+      <span class="avatar">SR</span>
+      <div class="review-body">
+        <div class="review-top">
+          <strong>Sara Reader</strong>
+          <span class="stars small">★★★★★</span>
+          <span class="muted small">· 3 days ago</span>
+        </div>
+        <p>Changed how I think.</p>
+      </div>
+    </li>
+    <li class="review">
+      <span class="avatar">MM</span>
+      <div class="review-body">
+        <div class="review-top">
+          <strong>Marco Member</strong>
+          <span class="stars small">★★★★☆</span>
+          <span class="muted small">· 2 weeks ago</span>
+        </div>
+        <p>A must read.</p>
+      </div>
+    </li>
+  </ul>
+
+  <!-- @empty -->
+  <div class="state">
+    <span class="state-icon">💬</span>
+    <p class="state-title">No reviews yet</p>
+    <p class="state-text">Be the first to share your thoughts.</p>
+  </div>
+</section>

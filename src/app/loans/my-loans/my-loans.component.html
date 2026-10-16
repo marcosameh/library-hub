@@ -1,1 +1,102 @@
-<p>my-loans works!</p>
+<section class="container page">
+  <header class="page-header">
+    <div>
+      <h1>My loans</h1>
+      <p class="subtitle">You can borrow up to 3 books at a time for 14 days.</p>
+    </div>
+  </header>
+
+  <!-- Summary -->
+  <div class="summary-grid">
+    <div class="summary-card surface">
+      <span class="summary-label">Active</span>
+      <span class="summary-value">2 <span class="muted small">/ 3</span></span>
+    </div>
+    <div class="summary-card surface danger">
+      <span class="summary-label">Overdue</span>
+      <span class="summary-value">1</span>
+    </div>
+    <div class="summary-card surface">
+      <span class="summary-label">Returned</span>
+      <span class="summary-value">4</span>
+    </div>
+  </div>
+
+  <!-- Overdue warning -->
+  <div class="alert alert-warning overdue-alert">
+    <span>⚠️</span>
+    <div class="alert-body">
+      <strong>You have 1 overdue book.</strong> You can't borrow new books until you return it.
+    </div>
+  </div>
+
+  <!-- Tabs → ?status=active|overdue|returned|all  (linkedSignal for selected tab) -->
+  <div class="tabs" role="tablist">
+    <button class="tab active" type="button" role="tab">Active<span class="count">2</span></button>
+    <button class="tab" type="button" role="tab">Overdue<span class="count">1</span></button>
+    <button class="tab" type="button" role="tab">Returned<span class="count">4</span></button>
+    <button class="tab" type="button" role="tab">All<span class="count">6</span></button>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Book</th>
+          <th>Borrowed</th>
+          <th>Due</th>
+          <th>Status</th>
+          <th class="actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- [class.overdue]="loan.isOverdue" -->
+        <tr class="overdue">
+          <td><a href="/books/1">Clean Code</a></td>
+          <td>
+            Sep 20, 2026
+            <span class="muted small d-block">3 weeks ago</span>
+          </td>
+          <td>Oct 4, 2026</td>
+          <td><span class="badge badge-danger">Overdue · 6 days</span></td>
+          <td class="actions">
+            <button class="btn btn-secondary btn-sm" type="button">Return</button>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="/books/10">Dune</a></td>
+          <td>
+            Oct 7, 2026
+            <span class="muted small d-block">3 days ago</span>
+          </td>
+          <td>Oct 21, 2026</td>
+          <td><span class="badge badge-primary">Active · 11 days left</span></td>
+          <td class="actions">
+            <!-- while returning -->
+            <button class="btn btn-secondary btn-sm" type="button" disabled>
+              <span class="spinner"></span> Returning…
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="/books/12">Sapiens</a></td>
+          <td>
+            Aug 31, 2026
+            <span class="muted small d-block">1 month ago</span>
+          </td>
+          <td>Sep 14, 2026</td>
+          <td><span class="badge badge-success">Returned Sep 12, 2026</span></td>
+          <td class="actions"><span class="muted">—</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- @empty -->
+  <div class="state surface">
+    <span class="state-icon">📖</span>
+    <p class="state-title">No loans here</p>
+    <p class="state-text">Find something to read in the catalogue.</p>
+    <a class="btn btn-primary" href="/books">Browse books</a>
+  </div>
+</section>

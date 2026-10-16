@@ -1,1 +1,67 @@
-<p>register works!</p>
+<section class="auth-page">
+  <div class="auth-card surface">
+    <header class="auth-header">
+      <span class="auth-logo">📚</span>
+      <h1>Create your account</h1>
+      <p class="muted">Join the library in less than a minute.</p>
+    </header>
+
+    <!-- Generic server error (non-field) -->
+    <div class="alert alert-danger">
+      <div class="alert-body">Registration failed. Please try again.</div>
+    </div>
+
+    <form class="stack" novalidate>
+      <div class="form-field">
+        <label class="required" for="fullName">Full name</label>
+        <input id="fullName" class="input" type="text" placeholder="Jane Doe" autocomplete="name" />
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <label class="required" for="email">Email</label>
+        <div class="input-wrapper">
+          <input id="email" class="input" type="email" placeholder="you@example.com" autocomplete="email" />
+          <!-- control.pending → spinner ; valid → ✓ -->
+          <span class="input-suffix"><span class="spinner"></span></span>
+          <!-- <span class="input-suffix text-success">✓</span> -->
+        </div>
+        <span class="hint">Checking availability…</span>
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <label class="required" for="password">Password</label>
+        <input id="password" class="input" type="password" autocomplete="new-password" />
+
+        <!-- Live password rules (class "ok" when satisfied) -->
+        <ul class="password-rules">
+          <li class="ok">At least 8 characters</li>
+          <li class="ok">One uppercase letter</li>
+          <li>One digit</li>
+        </ul>
+        <app-field-error />
+      </div>
+
+      <div class="form-field">
+        <label class="required" for="confirmPassword">Confirm password</label>
+        <input id="confirmPassword" class="input is-invalid" type="password" autocomplete="new-password" />
+        <!-- group-level error: passwordsMatch -->
+        <p class="error-text">Passwords do not match.</p>
+      </div>
+
+      <div class="form-field">
+        <label class="checkbox">
+          <input type="checkbox" />
+          <span>I accept the <a href="#">terms and conditions</a></span>
+        </label>
+        <app-field-error />
+      </div>
+
+      <!-- disabled while invalid / pending / submitting -->
+      <button class="btn btn-primary btn-lg btn-block" type="submit" disabled>Create account</button>
+    </form>
+
+    <p class="auth-footer">Already have an account? <a href="/login">Log in</a></p>
+  </div>
+</section>

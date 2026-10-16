@@ -1,1 +1,15 @@
-<p>field-error works!</p>
+<!-- Show only when the control is touched/dirty AND invalid.
+     Show ONE message: the first matching error key. -->
+<p class="error-text" role="alert">This field is required.</p>
+
+<!-- Examples of the messages you'll map from error keys:
+  required        → This field is required.
+  minlength       → Must be at least 3 characters.
+  email           → Please enter a valid email.
+  pattern         → Format is invalid.
+  min / max       → Must be between 1 and 50.
+  strongPassword  → Needs 8+ chars, 1 uppercase letter and 1 digit.
+  emailTaken      → This email is already registered.
+  isbnTaken       → This ISBN already exists.
+  server          → (message coming from the API)
+-->

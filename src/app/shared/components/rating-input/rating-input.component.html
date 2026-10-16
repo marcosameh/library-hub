@@ -1,1 +1,11 @@
-<p>rating-input works!</p>
+<!-- model<number>() → [(rating)]="value"
+     Add class "filled" to stars <= rating, "hover" to stars <= hovered star.
+     Add class "readonly" on the wrapper when readonly input is true. -->
+<div class="rating" role="radiogroup" aria-label="Rating">
+  <button class="star filled" type="button" role="radio" aria-label="1 star">★</button>
+  <button class="star filled" type="button" role="radio" aria-label="2 stars">★</button>
+  <button class="star filled" type="button" role="radio" aria-label="3 stars">★</button>
+  <button class="star" type="button" role="radio" aria-label="4 stars">★</button>
+  <button class="star" type="button" role="radio" aria-label="5 stars">★</button>
+  <span class="rating-label">3 / 5</span>
+</div>

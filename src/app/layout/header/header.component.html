@@ -1,1 +1,35 @@
-<p>header works!</p>
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href="/books">
+      <span class="brand-logo">📚</span>
+      <span>Library Hub</span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <a class="nav-link active" href="/books">Books</a>
+      <a class="nav-link" href="/my-loans">My loans</a>
+      <!-- Admin only -->
+      <a class="nav-link" href="/admin/dashboard">Admin</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn btn-ghost btn-icon" type="button" title="Toggle dark mode">🌙</button>
+
+      <!-- ===== Logged OUT ===== -->
+      <div class="auth-links">
+        <a class="btn btn-ghost" href="/login">Login</a>
+        <a class="btn btn-primary" href="/register">Register</a>
+      </div>
+
+      <!-- ===== Logged IN ===== -->
+      <div class="user-menu">
+        <span class="avatar">MM</span>
+        <div class="user-info">
+          <span class="user-name">Marco Member</span>
+          <span class="badge badge-primary">Member</span>
+        </div>
+        <button class="btn btn-secondary btn-sm" type="button">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>

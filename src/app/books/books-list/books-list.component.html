@@ -1,1 +1,112 @@
-<p>books-list works!</p>
+<section class="container page">
+  <header class="page-header">
+    <div>
+      <h1>Browse books</h1>
+      <p class="subtitle">25 books in the catalogue</p>
+    </div>
+    <!-- Admin only -->
+    <a class="btn btn-primary" href="/admin/books/new">+ Add book</a>
+  </header>
+
+  <!-- ============ Filters (sync with URL query params) ============ -->
+  <div class="filters surface">
+    <div class="form-field search">
+      <label for="search">Search</label>
+      <div class="input-wrapper">
+        <input id="search" class="input" type="search" placeholder="Title, author or ISBN…" />
+        <span class="input-suffix"><span class="spinner"></span></span>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="category">Category</label>
+      <select id="category" class="select">
+        <option value="">All categories</option>
+        <option>Business</option>
+        <option>Fantasy</option>
+        <option>History</option>
+        <option selected>Programming</option>
+        <option>Science</option>
+        <option>Science Fiction</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="sort">Sort by</label>
+      <div class="row nowrap">
+        <select id="sort" class="select">
+          <option value="title">Title</option>
+          <option value="year">Year</option>
+          <option value="price">Price</option>
+          <option value="rating">Rating</option>
+          <option value="createdAt">Newest</option>
+        </select>
+        <button class="btn btn-secondary btn-icon" type="button" title="Toggle sort direction">↑</button>
+      </div>
+    </div>
+
+    <div class="filters-footer">
+      <label class="checkbox">
+        <input type="checkbox" />
+        <span>Only available</span>
+      </label>
+      <button class="btn btn-ghost btn-sm" type="button">Clear filters</button>
+    </div>
+  </div>
+
+  <!-- ============ Active filter chips ============ -->
+  <div class="active-filters">
+    <span class="chip">Search: "clean" <button class="chip-remove" type="button" aria-label="Remove">×</button></span>
+    <span class="chip">Programming <button class="chip-remove" type="button" aria-label="Remove">×</button></span>
+  </div>
+
+  <!-- ============ STATE: loading (skeletons) ============ -->
+  <div class="books-grid">
+    <div class="skeleton-card">
+      <div class="skeleton cover"></div>
+      <div class="skeleton line"></div>
+      <div class="skeleton line short"></div>
+    </div>
+    <div class="skeleton-card">
+      <div class="skeleton cover"></div>
+      <div class="skeleton line"></div>
+      <div class="skeleton line short"></div>
+    </div>
+    <div class="skeleton-card">
+      <div class="skeleton cover"></div>
+      <div class="skeleton line"></div>
+      <div class="skeleton line short"></div>
+    </div>
+    <div class="skeleton-card">
+      <div class="skeleton cover"></div>
+      <div class="skeleton line"></div>
+      <div class="skeleton line short"></div>
+    </div>
+  </div>
+
+  <!-- ============ STATE: error ============ -->
+  <div class="state surface">
+    <span class="state-icon">⚠️</span>
+    <p class="state-title">Couldn't load books</p>
+    <p class="state-text">Something went wrong while contacting the server. Check that the API is running.</p>
+    <button class="btn btn-primary" type="button">Retry</button>
+  </div>
+
+  <!-- ============ STATE: empty (@empty) ============ -->
+  <div class="state surface">
+    <span class="state-icon">🔍</span>
+    <p class="state-title">No books found</p>
+    <p class="state-text">Try a different search term or clear the filters.</p>
+    <button class="btn btn-secondary" type="button">Clear filters</button>
+  </div>
+
+  <!-- ============ STATE: data — one <app-book-card> per book ============ -->
+  <div class="books-grid">
+    <app-book-card />
+    <app-book-card />
+    <app-book-card />
+    <app-book-card />
+  </div>
+
+  <app-pagination />
+</section>

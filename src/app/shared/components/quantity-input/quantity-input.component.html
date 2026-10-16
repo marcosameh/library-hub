@@ -1,1 +1,7 @@
-<p>quantity-input works!</p>
+<!-- ControlValueAccessor: used as <app-quantity-input formControlName="totalCopies" [min]="1" [max]="50" />
+     Disable "−" at min, "+" at max. Add class "disabled" on the wrapper when setDisabledState(true). -->
+<div class="quantity">
+  <button class="qty-btn" type="button" aria-label="Decrease">−</button>
+  <input class="qty-value" type="number" value="3" min="1" max="50" aria-label="Quantity" />
+  <button class="qty-btn" type="button" aria-label="Increase">+</button>
+</div>
