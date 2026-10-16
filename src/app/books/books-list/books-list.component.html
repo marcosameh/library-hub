@@ -61,7 +61,8 @@
   </div>
 
   <!-- ============ STATE: loading (skeletons) ============ -->
-  <div class="books-grid">
+   @if(loading){
+ <div class="books-grid">
     <div class="skeleton-card">
       <div class="skeleton cover"></div>
       <div class="skeleton line"></div>
@@ -83,15 +84,18 @@
       <div class="skeleton line short"></div>
     </div>
   </div>
-
-  <!-- ============ STATE: error ============ -->
+   }
+ 
+@if(hasError){
+<!-- ============ STATE: error ============ -->
   <div class="state surface">
     <span class="state-icon">⚠️</span>
     <p class="state-title">Couldn't load books</p>
     <p class="state-text">Something went wrong while contacting the server. Check that the API is running.</p>
     <button class="btn btn-primary" type="button">Retry</button>
   </div>
-
+}
+@if(!hasError && !loading && this.booksPagedResult.items.length==0){
   <!-- ============ STATE: empty (@empty) ============ -->
   <div class="state surface">
     <span class="state-icon">🔍</span>
@@ -99,14 +103,20 @@
     <p class="state-text">Try a different search term or clear the filters.</p>
     <button class="btn btn-secondary" type="button">Clear filters</button>
   </div>
+}
+  
+@if(!hasError && !loading && this.booksPagedResult.items.length>0){
+    <div class="books-grid">
+    <!-- ============ STATE: data — one <app-book-card> per book ============ -->
+    @for(book of this.booksPagedResult.items; track book.id){
 
-  <!-- ============ STATE: data — one <app-book-card> per book ============ -->
-  <div class="books-grid">
     <app-book-card />
-    <app-book-card />
-    <app-book-card />
-    <app-book-card />
-  </div>
+}
+</div>
+}
+ 
+
+ 
 
   <app-pagination />
 </section>
