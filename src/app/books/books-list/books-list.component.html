@@ -60,63 +60,41 @@
     <span class="chip">Programming <button class="chip-remove" type="button" aria-label="Remove">×</button></span>
   </div>
 
-  <!-- ============ STATE: loading (skeletons) ============ -->
-   @if(loading){
- <div class="books-grid">
-    <div class="skeleton-card">
-      <div class="skeleton cover"></div>
-      <div class="skeleton line"></div>
-      <div class="skeleton line short"></div>
-    </div>
-    <div class="skeleton-card">
-      <div class="skeleton cover"></div>
-      <div class="skeleton line"></div>
-      <div class="skeleton line short"></div>
-    </div>
-    <div class="skeleton-card">
-      <div class="skeleton cover"></div>
-      <div class="skeleton line"></div>
-      <div class="skeleton line short"></div>
-    </div>
-    <div class="skeleton-card">
-      <div class="skeleton cover"></div>
-      <div class="skeleton line"></div>
-      <div class="skeleton line short"></div>
-    </div>
-  </div>
-   }
- 
-@if(hasError){
-<!-- ============ STATE: error ============ -->
-  <div class="state surface">
-    <span class="state-icon">⚠️</span>
-    <p class="state-title">Couldn't load books</p>
-    <p class="state-text">Something went wrong while contacting the server. Check that the API is running.</p>
-    <button class="btn btn-primary" type="button">Retry</button>
-  </div>
-}
-@if(!hasError && !loading && this.booksPagedResult.items.length==0){
-  <!-- ============ STATE: empty (@empty) ============ -->
-  <div class="state surface">
-    <span class="state-icon">🔍</span>
-    <p class="state-title">No books found</p>
-    <p class="state-text">Try a different search term or clear the filters.</p>
-    <button class="btn btn-secondary" type="button">Clear filters</button>
-  </div>
-}
-  
-@if(!hasError && !loading && this.booksPagedResult.items.length>0){
+  @if (loading()) {
+    <!-- ============ STATE: loading (skeletons) ============ -->
     <div class="books-grid">
-    <!-- ============ STATE: data — one <app-book-card> per book ============ -->
-    @for(book of this.booksPagedResult.items; track book.id){
-
-    <app-book-card />
-}
-</div>
-}
- 
-
- 
+      @for (i of [1, 2, 3, 4]; track i) {
+        <div class="skeleton-card">
+          <div class="skeleton cover"></div>
+          <div class="skeleton line"></div>
+          <div class="skeleton line short"></div>
+        </div>
+      }
+    </div>
+  } @else if (hasError()) {
+    <!-- ============ STATE: error ============ -->
+    <div class="state surface">
+      <span class="state-icon">⚠️</span>
+      <p class="state-title">Couldn't load books</p>
+      <p class="state-text">Something went wrong while contacting the server. Check that the API is running.</p>
+      <button class="btn btn-primary" type="button" (click)="getBooks()">Retry</button>
+    </div>
+  } @else {
+    <div class="books-grid">
+      <!-- ============ STATE: data — one <app-book-card> per book ============ -->
+      @for (book of booksPagedResult()?.items; track book.id) {
+        <app-book-card [book]="book" />
+      } @empty {
+        <!-- ============ STATE: empty ============ -->
+        <div class="state surface">
+          <span class="state-icon">🔍</span>
+          <p class="state-title">No books found</p>
+          <p class="state-text">Try a different search term or clear the filters.</p>
+          <button class="btn btn-secondary" type="button">Clear filters</button>
+        </div>
+      }
+    </div>
+  }
 
   <app-pagination />
 </section>
