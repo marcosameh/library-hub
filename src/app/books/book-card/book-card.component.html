@@ -24,8 +24,7 @@
     <p class="author">{{ book().authorName }} · {{ book().publishedYear }}</p>
 
     <div class="book-footer">
-      <!-- TODO Milestone 2 step 5: replace with {{ book().averageRating | stars }} -->
-      <span class="stars" [title]="book().averageRating">{{ book().averageRating }}</span>
+      <span class="stars" [title]="book().averageRating">{{ book().averageRating | stars }}</span>
       <span class="price">{{ book().price | currency:'$' }}</span>
     </div>
   </div>
